@@ -8,42 +8,45 @@ import { useState } from 'react';
 import Cards from '../Cards/Cards';
 import Carousel from './Carousel';
 import { useEffect } from 'react';
+import BasicGrid from "./Grid"
 
 function Accordian() {
   const [expanded, setExpanded] = useState('panel1');
-  const [songData, setSongData] = useState([])
+  const [newSongData, setNewSongData] = useState([])
+  const [topSongData, setTopSongData] = useState([])
   
   const fetchData = async (url) =>{
     try {
       const response = await axios.get(`https://qtify-backend-labs.crio.do/albums/${url}`)
       console.log(response)
       const data = response.data
-      setSongData(data)
+      url=== "top"? setTopSongData(data) : setNewSongData(data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   
 useEffect(() => {
-    fetchData("top")
+  fetchData("top")
+  fetchData("new")
 },[])
 
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-    if(isExpanded){
-      if(panel === "panel1")
-      fetchData("top")
-    }
-    if(panel === "panel2"){
-      fetchData("new")
-    }
-  };
+  // const handleChange = (panel) => (event, isExpanded) => {
+  //   setExpanded(isExpanded ? panel : false);
+  //   if(isExpanded){
+  //     if(panel === "panel1")
+  //     fetchData("top")
+  //   }
+  //   if(panel === "panel2"){
+  //     fetchData("new")
+  //   }
+  // };
 
   return (
 
       <div>
-      <Accordion sx={{backgroundColor: 'darkgrey', fontFamily: 'Poppins'}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')} defaultExpanded>
+      {/* <Accordion sx={{backgroundColor: 'darkgrey', fontFamily: 'Poppins'}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')} defaultExpanded>
         <AccordionSummary
           expandIcon={expanded === 'panel1' ? 'Collapse All' : 'Show'}
         >
@@ -64,7 +67,10 @@ useEffect(() => {
         <AccordionDetails>
           <Carousel songData={songData} />
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
+
+      <BasicGrid  topSongData={topSongData}/>
+      <BasicGrid  newSongData={newSongData}/>
 
     </div>
   )
