@@ -4,7 +4,7 @@ import button from './button.module.css'
 
 function Buttons({text = 'Give Feeback'}) {
   return (
-    <Button variant="contained" className='FeedbackButton' sx={{background:'black', color:'green', font:'Poppins'}}> {text}</Button>
+    <Button variant="contained" className='FeedbackButton' sx={{background:'black', color:'green', fontFamily: 'Poppins, sans-serif'}}> {text}</Button>
   )
 }
 

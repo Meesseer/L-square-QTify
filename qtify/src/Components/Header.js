@@ -124,7 +124,7 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box >
-          <Buttons text = "Give Feedback"/>
+          <Buttons text = "Give Feedback" sx={{fontFamily:'Poppins'}}/>
           </Box>
         </Toolbar>
       </AppBar>
