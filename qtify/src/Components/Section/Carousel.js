@@ -7,7 +7,7 @@ import Cards from '../Cards/Cards';
 import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 
-const Carousel = ({songData = []}) => {
+const Carousel = ({newSongData = [], topSongData = []}) => {
 
 
 
@@ -16,20 +16,28 @@ const Carousel = ({songData = []}) => {
       <Swiper
         spaceBetween={5}
         slidesPerView={5}
-        onSlideChange={() => console.log('slide change')}
+        onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {songData.length > 0 ? (
-          songData.map((item, index) => (
+        {newSongData.length > 0 ? (
+          newSongData.map((item, index) => (
             <SwiperSlide key={index}>
-            <Cards songData={item} />
-          </SwiperSlide>
+              <Cards songData={item} />
+            </SwiperSlide>
           ))
         ) : (
           <Typography>No data available</Typography>
         )}
-        
-        
+
+        {topSongData.length > 0 ? (
+          topSongData.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Cards songData={item} />
+            </SwiperSlide>
+          ))
+        ) : (
+          <Typography>No data available</Typography>
+        )}
       </Swiper>
     );
   };
