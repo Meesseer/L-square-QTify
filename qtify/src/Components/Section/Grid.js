@@ -16,7 +16,7 @@ const Item = styled(Paper)({
 
 export default function BasicGrid({ newSongData = [], topSongData = [] }) {
   // State to toggle visibility of the song lists
-  const [showSongs, setShowSongs] = useState(true);
+  const [showSongs, setShowSongs] = useState(false);
 
   // Handler to toggle collapse/show
   const handleToggle = () => {
