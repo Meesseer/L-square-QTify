@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import PrimarySearchAppBar from "./Components/Header";
 import HeroImage from './Components/HeroImage';
+import Cards from './Components/Cards/Cards';
+import Section from './Components/Section/Section';
+import { useState } from 'react';
+import Carousel from './Components/Section/Carousel';
 
 
 function App() {
@@ -9,6 +13,8 @@ function App() {
     <>
     <PrimarySearchAppBar/>
     <HeroImage />
+    <Section />
+    <Carousel />
     </>
   )
 }
