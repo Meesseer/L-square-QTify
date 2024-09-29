@@ -47,11 +47,7 @@ export default function BasicGrid({ newSongData = [], topSongData = [] }) {
           ))
         ) : !showSongs && topSongData.length > 0 ? (
           <Carousel topSongData={topSongData} />
-        ) : (
-          <Grid item xs={12}>
-            <Typography>No new songs available</Typography>
-          </Grid>
-        )}
+        ) : null}
       </Grid>
 
      
@@ -70,11 +66,7 @@ export default function BasicGrid({ newSongData = [], topSongData = [] }) {
           ))
         ) : !showSongs && newSongData.length > 0 ? (
           <Carousel newSongData={newSongData} />
-        ) : (
-          <Grid item xs={12}>
-            <Typography>No new albums available</Typography>
-          </Grid>
-        )}
+        ) : null}
       </Grid>
     </Box>
   );

@@ -7,28 +7,12 @@ import { Chip } from '@mui/material';
 import { useState } from 'react';
 
 function Cards({ songData =[],justSongs }) {
-  // const hasJustSongs = !!justSongs && Object.keys(justSongs).length > 0;
- 
+  const hasJustSongs = !!justSongs && Object.keys(justSongs).length > 0;
 
   return (
-    <div className='Card'>
-    <Card sx={{ maxWidth: 200, background: 'black', height: 300}}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="200"
-        image={songData.image}
-      />
-      <CardContent sx={{background: 'white'}}>
-      <Chip label={`${songData.follows} follows`} />
-      </CardContent>
-      <CardActions sx={{color: 'white'}}>
-      {songData.title}
-      </CardActions>
-    </Card>
     
-    
-    {/* {hasJustSongs && (
+    <div>
+    {hasJustSongs && (
         <Card sx={{ maxWidth: 200, background: 'black', height: 300 }}>
           <CardMedia
             component="img"
@@ -42,8 +26,8 @@ function Cards({ songData =[],justSongs }) {
           <CardActions sx={{ color: 'white' }}>
             {justSongs.title}
           </CardActions>
-        </Card> */}
-    {/* )}   */}
+        </Card>
+    )}  
     </div>
   )
 }
