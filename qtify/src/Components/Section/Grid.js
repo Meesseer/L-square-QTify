@@ -25,11 +25,36 @@ export default function BasicGrid({ newSongData = [], topSongData = [] }) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2, }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
         <Button variant="contained" onClick={handleToggle}>
           {showSongs ? "Collapse" : "Show All"}
         </Button>
       </Box>
+
+
+      <Grid
+        container
+        spacing={2}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        {showSongs && topSongData.length > 0 ? (
+          topSongData.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Item>
+                <Cards songData={item} />
+              </Item>
+            </Grid>
+          ))
+        ) : !showSongs && topSongData.length > 0 ? (
+          <Carousel topSongData={topSongData} />
+        ) : (
+          <Grid item xs={12}>
+            <Typography>No new songs available</Typography>
+          </Grid>
+        )}
+      </Grid>
+
+     
       <Grid
         container
         spacing={2}
@@ -44,30 +69,10 @@ export default function BasicGrid({ newSongData = [], topSongData = [] }) {
             </Grid>
           ))
         ) : !showSongs && newSongData.length > 0 ? (
-          
           <Carousel newSongData={newSongData} />
         ) : (
-       
           <Grid item xs={12}>
-            <Typography>No new songs available</Typography>
-          </Grid>
-        )}
-
-        {showSongs && topSongData.length > 0 ? (
-          topSongData.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <Item>
-                <Cards songData={item} />
-              </Item>
-            </Grid>
-          ))
-        ) : !showSongs && topSongData.length > 0 ? (
-          
-          <Carousel topSongData={topSongData} />
-        ) : (
-       
-          <Grid item xs={12}>
-            <Typography>No new songs available</Typography>
+            <Typography>No new albums available</Typography>
           </Grid>
         )}
       </Grid>

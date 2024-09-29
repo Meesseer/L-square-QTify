@@ -9,6 +9,8 @@ import Cards from '../Cards/Cards';
 import Carousel from './Carousel';
 import { useEffect } from 'react';
 import BasicGrid from "./Grid"
+import { Box } from '@mui/material';
+import { grey } from '@mui/material/colors';
 
 function Accordian() {
   const [expanded, setExpanded] = useState('panel1');
@@ -45,7 +47,7 @@ useEffect(() => {
 
   return (
 
-      <div>
+      <div className='Albums'>
       {/* <Accordion sx={{backgroundColor: 'darkgrey', fontFamily: 'Poppins'}} expanded={expanded === 'panel1'} onChange={handleChange('panel1')} defaultExpanded>
         <AccordionSummary
           expandIcon={expanded === 'panel1' ? 'Collapse All' : 'Show'}
@@ -68,10 +70,18 @@ useEffect(() => {
           <Carousel songData={songData} />
         </AccordionDetails>
       </Accordion> */}
-
-      <BasicGrid  topSongData={topSongData}/>
-      <BasicGrid  newSongData={newSongData}/>
-
+      <Box sx={{ mb: 2,fontFamily:'Poppins', paddingTop:'2'}}>
+        <Typography variant="h5" gutterBottom>
+          Top Albums
+        </Typography>
+      </Box>
+      <BasicGrid  topSongData={topSongData} newSongData={[]}/>
+      <Box sx={{ mb: 2, fontFamily:'Poppins' }}>
+        <Typography variant="h5" gutterBottom>
+          New Albums
+        </Typography>
+      </Box>
+      <BasicGrid  topSongData={[]} newSongData={newSongData}/>
     </div>
   )
 }
